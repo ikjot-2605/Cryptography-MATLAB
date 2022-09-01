@@ -1,0 +1,12 @@
+% This function is to perform the expansion permutation.
+
+function cs123_exp = cs123_EP(cs123_toExp)
+    % This is the EP array
+    cs123_EP_TABLE = [4, 1,2, 3, 2, 3, 4, 1];
+    
+    cs123_exp='';
+    for cs123_i =1:8
+       cs123_exp = append(cs123_exp,cs123_toExp{1}(cs123_EP_TABLE(cs123_i)));
+    end
+    
+end

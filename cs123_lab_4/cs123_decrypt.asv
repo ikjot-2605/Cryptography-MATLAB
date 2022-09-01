@@ -1,0 +1,10 @@
+function cs123_decrypt(cs123_PT,cs123_key1,cs123_key2)
+cs123_PT = cs123_IP(cs123_PT);
+fprintf('\n\nROUND 1\n\n');
+cs123_PT = cs123_internal_func(cs123_PT,cs123_key2,true);
+fprintf('\n\nROUND 2\n\n');
+cs123_PT = cs123_internal_func(cs123_PT,cs123_key1,false);
+cs123_PT = cs123_inv_IP(cs123_PT);
+fprintf("After Inverse Permutation : %s\n",string(cs123_PT));
+fprintf("\nFINAL PLAIN TEXT IS : %s",string(cs123_PT));
+end

@@ -1,0 +1,52 @@
+function cs_123_q1
+    
+    disp("Ikjot Singh Lab 2 Hill Cipher Program 1 - 191CS123")
+
+    % Cipher text
+    cs123_CT = "YITJPGWJOWFAQTQXCSMAETSQUSQAPUSQGKCP";
+    % INV KEY MATRIX
+    cs123_INV_KEY = [5,2;1,7];
+    % Length of Cipher text
+    cs123_CT_length = strlength(cs123_CT);
+    % Plain text object
+    cs123_PT=[];
+    % checks whether length is odd or even
+    isOdd = false;
+    
+    for cs123_count = 1:2:cs123_CT_length
+        % extract next 2 chars
+        cs123_currstr = extractBetween(cs123_CT,cs123_count,min(cs123_CT_length,cs123_count+1));
+        % if only 1 char left
+        if(strlength(cs123_currstr)==1)
+            cs123_currstr=append(cs123_currstr,"C");
+            isOdd = true;
+        end
+        
+        [n1,n2]=cs_123_mapping_aton(cs123_currstr{1}(1:1),cs123_currstr{1}(2:2));
+        cs123_PT_m = [n1,n2]*cs123_INV_KEY;
+        cs123_PT_m = mod(cs123_PT_m,26);
+        [n1,n2] = cs_123_mapping_ntoa(cs123_PT_m(1),cs123_PT_m(2));
+        % add decrypted characters to the plain text object 
+        cs123_PT(end+1) = char(n1);
+        cs123_PT(end+1) = char(n2);
+    end
+    if(isOdd)
+        cs123_PT(end) = [];
+        cs123_PT(end) = [77];
+    end
+    % Print result
+    disp("THE DECODED MESSAGE IS ")
+    disp(char(cs123_PT))
+end
+
+% function to get the mapping of char to num
+function [cs123_cn1,cs123_cn2]=cs_123_mapping_aton(cs123_c1,cs123_c2)
+    cs123_cn1 = cs123_c1-'A'+1;
+    cs123_cn2 = cs123_c2-'A'+1;
+end
+
+% function to get the mapping of num to char
+function [cs123_cn1,cs123_cn2]=cs_123_mapping_ntoa(cs123_c1,cs123_c2)
+    cs123_cn1 = cs123_c1+'A'-1;
+    cs123_cn2 = cs123_c2+'A'-1;
+end

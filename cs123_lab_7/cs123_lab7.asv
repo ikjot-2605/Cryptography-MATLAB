@@ -1,0 +1,10 @@
+function cs123_lab7()
+    cs123_M = [189,632,900,722,349];
+    cs123_n = 989;
+    cs123_result = 0;
+    for cs123_i=(1:length(cs123_M))
+        cs123_result = mod(cs123_result + mod(cs123_M(cs123_i)*cs123_M(cs123_i),n),n);
+    end
+
+end
+

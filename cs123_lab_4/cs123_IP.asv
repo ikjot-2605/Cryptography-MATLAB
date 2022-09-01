@@ -1,0 +1,8 @@
+function cs123_PT_IP = cs123_IP(cs123_PT)
+    cs123_IP8 = [2 ,6, 3 ,1 ,4 ,8 ,5, 7];
+    cs123_PT_IP = '';
+    for cs123_i=1:8
+        cs123_PT_IP = append(cs123_PT_IP,cs123_PT(cs123_IP8(cs123_i)));
+    end
+    disp(cs123_PT_IP);
+end
